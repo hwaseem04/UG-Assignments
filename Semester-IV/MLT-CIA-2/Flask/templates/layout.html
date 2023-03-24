@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Playground
+        </title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="stylesheet" href="static/styles.css">
+        
+    </head>
+    <body>
+        
+        <div>
+            <div id="header">
+                <div class=head id="navigate-to-home">
+                    <h3>Muhammad Waseem</h3>
+                </div>
+                <div class=head id="project-name">
+                    <h2>ML Playground</h2>
+                </div>
+                <div class=head id="logout">
+                    <a id="logout-link" href="\logout"><h3>logout</h3></a>
+                </div>
+            </div>
+
+            {% block body %}{% endblock %}
+        </div>
+        
+    </body>
+</html>

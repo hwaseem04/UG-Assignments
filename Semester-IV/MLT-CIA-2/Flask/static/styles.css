@@ -1,0 +1,119 @@
+*{
+    margin: 0px;
+}
+
+body{
+    background-color: whitesmoke;
+}
+
+/* For displaying images in home page */
+.image-container {
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+  
+.image {
+    width: 300px; 
+    padding: 20px; 
+    box-sizing: border-box; 
+    text-align: center; 
+}
+  
+  .image-container .text {
+    margin-top: 5px; 
+  }
+  
+  .image img {
+    width: 100%; /* set the width of the image to 100% to fill its container */
+    height: 300px;; /* set the height to auto to maintain aspect ratio */
+  }
+  
+
+
+/* For login page */
+.login-box {
+    width: 350px;
+    height: 450px;
+    background: #fff;
+    color: #000;
+    margin-top: 40px;
+    box-sizing: border-box;
+    padding: 70px 30px;
+  }
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px 0;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 2px solid #adadad;
+    outline: none;
+    font-size: 16px;
+    color: #000;
+    background: transparent;
+}
+  
+.login-box button[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: gainsboro;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+  }
+  
+.login-box button[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+  }
+  
+
+#body{
+    padding-top: 30px;
+}
+
+
+/* Header related CSS */
+#header{
+    height: 40px;
+    background-color:mediumvioletred;
+    color:snow;
+}
+
+.head{
+    float: left;
+    height: 100%;
+    line-height: 40px;
+}
+
+#navigate-to-home{
+    width: 30%;
+    text-align: left;
+}
+
+#project-name{
+    width: 40%;
+    text-align: center;
+}
+
+#logout{
+    width: 30%;
+    text-align: right;
+}
+
+#logout-link{
+    text-decoration: none;
+    color: snow;
+}
+
+#logout-link:hover{
+    text-decoration: underline;
+    color: snow;
+}

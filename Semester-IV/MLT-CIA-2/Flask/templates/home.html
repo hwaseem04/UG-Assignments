@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div id="body">
+    <center><h1>Hi {{user}}</h1></center>
+    <div class="image-container">
+        <div class="image">
+            <a href="/mnist">
+                <img src="../static/images/mnist.png" alt="MNIST digits classification">
+                <div class="text">MNIST Classification</div>
+            </a>
+        </div>
+        <div class="image">
+            <a href="/regression">
+                <img src="../static/images/regression.png" alt="Regression">
+                <div class="text">Regression</div>
+            </a>
+        </div>
+
+    </div>
+      
+</div>
+
+{% endblock %}
