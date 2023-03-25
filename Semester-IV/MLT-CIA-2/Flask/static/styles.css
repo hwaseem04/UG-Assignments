@@ -5,13 +5,61 @@
 body{
     background-color: whitesmoke;
 }
+/* Regression page */
+input[type="number"] {
+    width: 30%;
+    height: 40px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+  }
+
+/* Mnist Page */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+}
+.container img {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
+#selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px;
+}
+#selected img{
+    width: 150px;
+    height: 150px;
+}
+input[type="submit"] {
+    border: none;
+    outline: none;
+    height: 40px;
+    background: gainsboro;
+    color: black;
+    font-size: 18px;
+    border-radius: 20px;
+}
+input[type="submit"]:hover {
+    cursor: pointer;
+    background: #ffc107;
+    color: #000;
+}
+
 
 /* For displaying images in home page */
 .image-container {
     display: flex; 
     flex-wrap: wrap; 
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: 50px;
     margin-right: 50px;
 }
@@ -72,7 +120,7 @@ body{
     cursor: pointer;
     background: #ffc107;
     color: #000;
-  }
+}
   
 
 #body{
@@ -115,5 +163,5 @@ body{
 
 #logout-link:hover{
     text-decoration: underline;
-    color: snow;
+    color:burlywood;
 }

@@ -1,5 +1,25 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+<div id="body">
+    <center>
+        <h2>{{prediction}}</h2>
+        <div id="selected-text">
+            <b>Note: </b><i>To go to home page: click <b>ML Playground</b> above</i><br>
+            <i>Select an image from below and click submit</i>
+        </div>
+        <form action="/mnist" method="post">
+            <div id="selected">
+                <img id="selected-image" src="{{select_path}}" alt="select/upload digit">
+            </div>
+            <input id="temp" type="hidden" name="image" value="{{select_path}}">
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+    <div class="container">
+        {% for file in files %}
+            <img src="{{file}}" alt="mnist digit" onclick="showImage(this)">
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

@@ -1,5 +1,19 @@
 {% extends "layout.html" %}
 
 {% block body %}
-
+<div id="body">
+    <center>
+        <h2>Simple regression of salary based on years of experience</h2>
+        <div id="selected-text">
+            <b>Note: </b><i>To go to home page: click <b>ML Playground</b> above</i><br>
+        </div>
+        <br><br><br>
+        <form action="\regression" method="post">
+            <input type="number" step="0.01" name="exp" required placeholder="Years of experience"><br><br>
+            <input type="submit" value="Predict">
+        </form>
+        <br>
+        {{prediction}}
+    </center>
+</div>
 {% endblock %}

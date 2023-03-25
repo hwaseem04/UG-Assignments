@@ -1,9 +1,44 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import sqlite3
-
+import pickle
+import torch
+from torchvision import transforms
+from PIL import Image
+import os
 
 app = Flask(__name__)
 app.secret_key = "text123"
+
+# Simple regression to predict salary with years of experience
+def predict_salary(exp):
+    import numpy as np
+    exp = np.array([[exp]])
+    model = pickle.load(open('../simpleregression.pkl', 'rb'))
+    prediction = model.predict(exp)
+    return prediction[0][0]
+
+# Predict the digit
+def predict(img):
+    # Load image and convert to tensor
+    img = Image.open(img)
+    transform = transforms.ToTensor()
+    img = transform(img)
+
+    # model class object loaded
+    modelClass = pickle.load(open('../classificationModel.pkl', 'rb'))
+
+    # model checkpoint loaded
+    model_dict = torch.load('../classificationCheckpoint.pt')
+
+    # Setting the pretrained weights
+    modelClass.load_state_dict(model_dict)
+    modelClass.eval()
+
+    # Output prediction
+    prediction = modelClass(img.unsqueeze(0))
+    prediction = torch.argmax(torch.softmax(prediction, axis=1), axis=1).item()
+
+    return prediction
 
 # Function to validate username and password
 def validate(username, password):
@@ -63,13 +98,39 @@ def home():
     else:
         return render_template('index.html')
 
-@app.route("/mnist")
+@app.route("/mnist", methods=["POST", "GET"])
 def mnist():
-    return render_template('mnist.html')
+    if "user" in session:
+        path = r'static/images/mnist_data'
+        files = os.listdir(path)
+        files_path = []
+        for file in files:
+            files_path.append(os.path.join(path, file))
 
-@app.route("/regression")
+        
+        if request.method == "POST":
+            img_path = request.form['image']
+            img_path = img_path.replace("http://127.0.0.1:5000/","" )
+            prediction = predict(img_path)
+            prediction = f'Predicted digit: {prediction}'
+            return render_template('mnist.html', files=files_path, prediction=prediction, select_path=img_path)
+        else:
+            return render_template('mnist.html', files=files_path, select_path="static/images/mnist_data/img_1.jpg")
+    return redirect(url_for('index'))
+
+@app.route("/regression", methods=["POST", "GET"])
 def regression():
-    return render_template('regression.html')
+    if "user" in session:
+        if request.method == "POST":
+            exp = float(request.form['exp'])
+            prediction = predict_salary(exp)
+            prediction = f'Predicted salary for {exp} years of experience is: {prediction:.4f}'
+            return render_template('regression.html', prediction=prediction)
+        else:
+            
+            return render_template('regression.html')
+    return redirect(url_for('index'))
+
 
 @app.route("/logout")
 def logout():
