@@ -65,6 +65,8 @@ def validate(username, password):
     if flag != 1:
         cur.execute(f'INSERT INTO user VALUES("{username}", "{password}");')
         conn.commit()
+        conn.close()
+        return 1
 
     conn.close()
     return 0
