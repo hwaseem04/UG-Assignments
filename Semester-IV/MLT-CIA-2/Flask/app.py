@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-import sqlite3
+import pymysql
 import pickle
 import torch
 from torchvision import transforms
@@ -46,8 +46,10 @@ def validate(username, password):
     --> New user is created if user doesn't exist.
     --> If existing user enters wrong password, then the user won't be redirected to any page.
     """
-    
-    conn = sqlite3.connect('../database.db')
+    # If you have your password in your rc file. Else directly pass the password
+    password = os.environ.get('SQLPASSWORD')
+
+    conn = pymysql.connect(host='localhost', port=3306, user='root', password=password, db='mlt')
     cur = conn.cursor()
     
     cur.execute('SELECT * FROM user;')
