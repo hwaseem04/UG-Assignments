@@ -9,6 +9,7 @@ undergraduate assignments and tests
 
 - **IoT**
     - [Assignment](Semester-IV/IOT-Assignment)
+    - [CIA-2](Semester-IV/IOT-CIA-2)
 
 - **DAA**
     - [CIA-1](Semester-IV/DAA-CIA-1)
